@@ -26,3 +26,7 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+application {
+    mainClass.set("de.maximilianmleziva.DnDCurrencyManagerCLI")
+}
