@@ -21,7 +21,7 @@ public class DnDCurrencyManagerCLI {
 
     private void hilfe() {
         HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("time-tracker", options);
+        formatter.printHelp("dnd-currency-manager", options);
     }
     
     CLIStatus readCLI(String[] args) throws IOException {
