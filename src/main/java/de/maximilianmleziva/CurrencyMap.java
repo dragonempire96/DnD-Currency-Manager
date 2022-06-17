@@ -8,6 +8,7 @@ class CurrencyMap {
 
     static void updateMap(String key, List<Integer> value) {
         map.put(key, value);
+        TextFile.write(map);
     }
 
     static void setMap(HashMap<String, List<Integer>> map) {
