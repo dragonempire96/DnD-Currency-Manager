@@ -12,12 +12,6 @@ class DnDCurrencyManagerCLITest {
 
     private DnDCurrencyManagerCLI dndCurrencyManagerCLI;
 
-    @BeforeEach
-    void init() throws IOException {
-        CSV csv = new CSV(false);
-        this.dndCurrencyManagerCLI = new DnDCurrencyManagerCLI(csv);
-    }
-
     @Test
     @DisplayName("Leerer Aufruf, zeige Hilfe an.")
     public void test1() throws IOException {
