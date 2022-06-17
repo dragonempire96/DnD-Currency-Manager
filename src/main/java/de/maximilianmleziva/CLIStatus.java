@@ -1,5 +1,5 @@
 package de.maximilianmleziva;
 
 enum CLIStatus {
-    HELP, ADD_ENTRY, ERROR, SHOW_TABLE, BUY
+    HELP, ADD_ENTRY, ERROR, SHOW_TABLE, BUY, ADD, REMOVE, INITIALIZE
 }
