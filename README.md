@@ -37,4 +37,4 @@ Native builds can be achieved using this command:
 Keep in mind, that you need a valid graalvm-installation on your machine for this command.
 
 ## License
-This project uses the [MIT License](https://github.com/hhu-propra1/time-tracker/blob/main/LICENSE).
+This project uses the [MIT License](https://github.com/dragonempire96/DnD-Currency-Manager/blob/main/LICENSE).
