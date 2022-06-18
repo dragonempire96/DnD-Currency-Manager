@@ -12,6 +12,24 @@ First you have to create a shadow jar with the imported gradle plugin via tasks 
 
 After that you direct your terminal to the directory of the shadow jar (it's in dnd-currency/build/libs by default) and use the DnD-Currency-Manager with the following commands.
 
+To initialize a new Character, use
+
+    java -jar SHADOW_JAR_FILE_NAME.jar -i "<Character>",<PC>,<GC>,<SC>,<CC>
+
+<!-- To add coins to a Character, use
+
+    java -jar SHADOW_JAR_FILE_NAME.jar -a "<Character>",<PC>,<GC>,<SC>,<CC> 
+
+To remove coins from a Character, use
+
+    java -jar SHADOW_JAR_FILE_NAME.jar -r "<Character>",<PC>,<GC>,<SC>,<CC> 
+
+To remove coins from buy an item, use
+
+    java -jar SHADOW_JAR_FILE_NAME.jar -b "<Character>","<Item>*"
+
+_*(please look in the Preisliste.md for the Item name)_ -->
+
 ## Development
 
 This is a gradle project. Check out the repository and configure it in your IDE as a gradle project. We are using the latest LTS JDK, which is currently version 17.
