@@ -48,7 +48,7 @@ public class DnDCurrencyManagerCLI {
                 String[] buyArgs = cmd.getOptionValues("b");
                 String player = buyArgs[0];
                 String item = buyArgs[1];
-                Buy.buyItem(player, item);
+                //Buy.buyItem(player, item);
                 System.out.println("gekauft: " + item);
                 return CLIStatus.BUY;
             } else if (cmd.hasOption("a")) {
@@ -59,8 +59,8 @@ public class DnDCurrencyManagerCLI {
                         Integer.parseInt(options[2]),
                         Integer.parseInt(options[3]),
                         Integer.parseInt(options[4]));
-                //Currency.add(player, money);
-                System.out.println("Hinzugefügt: " + money);
+                Currency.add(player, money);
+                System.out.println("Hinzugefügt: " + options[1] + "PM" + options[2] + "GM" + options[3] + "SM" + options[4] + "CM");
                 return CLIStatus.ADD;
             } else if (cmd.hasOption("r")) {
                 TextFile.read();
@@ -70,8 +70,8 @@ public class DnDCurrencyManagerCLI {
                         Integer.parseInt(options[2]),
                         Integer.parseInt(options[3]),
                         Integer.parseInt(options[4]));
-                //Currency.remove(player, money);
-                System.out.println("Entfernt: " + money);
+                Currency.remove(player, money);
+                System.out.println("Entfernt: " + options[1] + "PM" + options[2] + "GM" + options[3] + "SM" + options[4] + "CM");
                 return CLIStatus.REMOVE;
             } else if (cmd.hasOption("i")) {
                 TextFile.read();
@@ -82,7 +82,7 @@ public class DnDCurrencyManagerCLI {
                         Integer.parseInt(options[3]),
                         Integer.parseInt(options[4]));
                 CurrencyMap.updateMap(player, money);
-                System.out.println("Spieler hinzugefügt: " + player);
+                System.out.println("Character" + player + "hinzugefügt!");
                 return CLIStatus.INITIALIZE;
             }
         } catch (ParseException e) {
