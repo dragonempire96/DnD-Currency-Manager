@@ -2,14 +2,13 @@ package de.maximilianmleziva;
 
 import org.apache.commons.cli.*;
 
-import java.io.IOException;
 import java.util.List;
 
 public class DnDCurrencyManagerCLI {
 
     private static final Options options = new Options();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         DnDCurrencyManagerCLI dnDCurrencyManagerCLI = new DnDCurrencyManagerCLI();
         dnDCurrencyManagerCLI.readCLI(args);
     }
@@ -19,7 +18,7 @@ public class DnDCurrencyManagerCLI {
         formatter.printHelp("dnd-currency-manager", options);
     }
     
-    CLIStatus readCLI(String[] args) throws IOException {
+    CLIStatus readCLI(String[] args) {
         options.addOption("h", "help", false, "Zeige diese Hilfe an");
         Option buyOption = new Option("b", "buy", true, "Kaufe ein Item");
         buyOption.setArgs(2);
@@ -37,6 +36,10 @@ public class DnDCurrencyManagerCLI {
         initOption.setArgs(5);
         initOption.setValueSeparator(',');
         options.addOption(initOption);
+        Option convertOption = new Option("c", "convert", true, "Rechne einen Wert in einen anderen Wert");
+        convertOption.setArgs(4);
+        convertOption.setValueSeparator(',');
+        options.addOption(convertOption);
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd;
@@ -48,7 +51,7 @@ public class DnDCurrencyManagerCLI {
                 String[] buyArgs = cmd.getOptionValues("b");
                 String player = buyArgs[0];
                 String item = buyArgs[1];
-                //Buy.buyItem(player, item);
+                Buy.buyItem(player, item);
                 System.out.println("gekauft: " + item);
                 return CLIStatus.BUY;
             } else if (cmd.hasOption("a")) {
@@ -84,6 +87,21 @@ public class DnDCurrencyManagerCLI {
                 CurrencyMap.updateMap(player, money);
                 System.out.println("Character" + player + "hinzugefügt!");
                 return CLIStatus.INITIALIZE;
+            } else if (cmd.hasOption("c")) {
+                TextFile.read();
+                String[] options = cmd.getOptionValues("c");
+                String player = options[0];
+                int amount = Integer.parseInt(options[1]);
+                String from = options[2];
+                String to = options[3];
+                int converted = Currency.convert(player, amount, from, to);
+                if (converted == -1) {
+                    System.out.println("Keine passende Umrechnung gefunden!");
+                    return CLIStatus.ERROR;
+                } else {
+                    System.out.println("Konvertiert: " + amount + " " + from + " in " + converted + " " + to);
+                    return CLIStatus.CONVERT;
+                }
             }
         } catch (ParseException e) {
             hilfe();
