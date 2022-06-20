@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="sql11498438@sql11.freesqldatabase.com" uuid="94dd0b7f-23a9-47e5-be32-5c10aeb7145a">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="DnD_Database@mleziva.database.windows.net" uuid="da48b6b8-2faa-4e31-9041-f2d70d9895ec">
+      <driver-ref>azure.ms</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://sql11.freesqldatabase.com:3306/sql11498438</jdbc-url>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://mleziva.database.windows.net:1433;database=DnD_Database;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
