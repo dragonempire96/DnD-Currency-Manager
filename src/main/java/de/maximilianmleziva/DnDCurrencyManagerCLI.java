@@ -47,7 +47,7 @@ public class DnDCurrencyManagerCLI {
         try {
             cmd = parser.parse(options, args);
             if (cmd.hasOption("b")) {
-                TextFile.read();
+                TextFile.readToHashmap();
                 String[] buyArgs = cmd.getOptionValues("b");
                 String player = buyArgs[0];
                 String item = buyArgs[1];
@@ -55,7 +55,7 @@ public class DnDCurrencyManagerCLI {
                 System.out.println("gekauft: " + item);
                 return CLIStatus.BUY;
             } else if (cmd.hasOption("a")) {
-                TextFile.read();
+                TextFile.readToHashmap();
                 String[] options = cmd.getOptionValues("a");
                 String player = options[0];
                 List<Integer> money = List.of(Integer.parseInt(options[1]),
@@ -66,7 +66,7 @@ public class DnDCurrencyManagerCLI {
                 System.out.println("Hinzugefügt: " + options[1] + "PM" + options[2] + "GM" + options[3] + "SM" + options[4] + "CM");
                 return CLIStatus.ADD;
             } else if (cmd.hasOption("r")) {
-                TextFile.read();
+                TextFile.readToHashmap();
                 String[] options = cmd.getOptionValues("r");
                 String player = options[0];
                 List<Integer> money = List.of(Integer.parseInt(options[1]),
@@ -77,18 +77,19 @@ public class DnDCurrencyManagerCLI {
                 System.out.println("Entfernt: " + options[1] + "PM" + options[2] + "GM" + options[3] + "SM" + options[4] + "CM");
                 return CLIStatus.REMOVE;
             } else if (cmd.hasOption("i")) {
-                TextFile.read();
+                TextFile.readToHashmap();
                 String[] options = cmd.getOptionValues("i");
                 String player = options[0];
-                List<Integer> money = List.of(Integer.parseInt(options[1]),
-                        Integer.parseInt(options[2]),
-                        Integer.parseInt(options[3]),
-                        Integer.parseInt(options[4]));
-                CurrencyMap.updateMap(player, money);
-                System.out.println("Character" + player + "hinzugefügt!");
+                int platinum = Integer.parseInt(options[1])*1000;
+                int gold = Integer.parseInt(options[2])*100;
+                int silver = Integer.parseInt(options[3])*10;
+                int copper = Integer.parseInt(options[4]);
+                double money = (platinum + gold + silver + copper);
+                CurrencyMap.updateMap(player, money/100);
+                System.out.println("Character " + player + " hinzugefügt!");
                 return CLIStatus.INITIALIZE;
             } else if (cmd.hasOption("c")) {
-                TextFile.read();
+                TextFile.readToHashmap();
                 String[] options = cmd.getOptionValues("c");
                 String player = options[0];
                 int amount = Integer.parseInt(options[1]);
